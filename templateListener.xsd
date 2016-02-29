@@ -17,14 +17,14 @@
 	<!-- import element -->
 	<xs:complexType name="import">
 		<xs:sequence>
-			<xs:element name="templatelistener" type="templatelistener_import" maxOccurs="unbounded" />
+			<xs:element name="templatelistener" type="templatelistener_import" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 	
 	<!-- delete element -->
 	<xs:complexType name="delete">
 		<xs:sequence>
-			<xs:element name="templatelistener" type="templatelistener_delete" maxOccurs="unbounded" />
+			<xs:element name="templatelistener" type="templatelistener_delete" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 	
