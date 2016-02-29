@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is used for package server xml files. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.woltlab.com" targetNamespace="http://www.woltlab.com" elementFormDefault="qualified">
+	<!-- include types -->
+	<xs:include schemaLocation="types.xsd" />
+	
+	<!-- section element -->
+	<xs:element name="section">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="package" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- package element -->
+	<xs:element name="package">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="packageInformation" />
+				<xs:element ref="authorInformation" />
+				<xs:element ref="versions" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="woltlab_varchar" />
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- package information element -->
+	<xs:element name="packageInformation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="packagename" />
+				<xs:element ref="packagedescription" />
+				<xs:choice minOccurs="0">
+					<xs:element ref="plugin" />
+					<xs:element ref="isapplication" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- package name element -->
+	<xs:element name="packagename" type="woltlab_varchar" />
+	
+	<!-- package description element -->
+	<xs:element name="packagedescription" type="woltlab_varchar" />
+	
+	<!-- plugin element -->
+	<xs:element name="plugin" type="woltlab_varchar" />
+	
+	<!-- isapplication element -->
+	<xs:element name="isapplication" type="woltlab_boolean" />
+	
+	<!-- author information element -->
+	<xs:element name="authorInformation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="author" />
+				<xs:element ref="authorurl" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- author element -->
+	<xs:element name="author" type="xs:string" />
+	
+	<!-- author url element -->
+	<xs:element name="authorurl" type="xs:anyURI" />
+	
+	<!-- versions element -->
+	<xs:element name="versions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="version" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- version element -->
+	<xs:element name="version">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="fromversions" />
+				<xs:element minOccurs="0" ref="requiredpackages" />
+				<xs:element ref="updatetype" />
+				<xs:element ref="timestamp" />
+				<xs:element ref="versiontype" />
+				<xs:element ref="license" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- from versions element -->
+	<xs:element name="fromversions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="fromversion" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- fromversion element -->
+	<xs:element name="fromversion" type="xs:string" />
+	
+	<!-- required packages element -->
+	<xs:element name="requiredpackages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="requiredpackage" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- required package element -->
+	<xs:element name="requiredpackage">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:NCName">
+					<xs:attribute name="minversion" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- update type element -->
+	<xs:element name="updatetype" type="xs:NCName" />
+	
+	<!-- timestamp element -->
+	<xs:element name="timestamp" type="xs:integer" />
+	
+	<!-- version type element -->
+	<xs:element name="versiontype" type="xs:NCName" />
+	
+	<!-- license element -->
+	<xs:element name="license" type="xs:NCName" />
+</xs:schema>
