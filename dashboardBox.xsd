@@ -30,11 +30,14 @@
 
 	<!-- dashboardbox import element type -->
 	<xs:complexType name="dashboardbox">
-		<xs:all>
-			<xs:attribute name="name" type="woltlab_varchar" use="required" />
-			<xs:element name="classname" type="woltlab_varchar" minOccurs="1" />
-			<xs:element name="boxtype" type="woltlab_boxtype" minOccurs="1" />
-		</xs:all>
+		<xs:complexContent>
+			<xs:extension base="dashboardbox_basic">
+				<xs:all>
+					<xs:element name="classname" type="woltlab_varchar" minOccurs="1" />
+					<xs:element name="boxtype" type="woltlab_boxtype" minOccurs="1" />
+				</xs:all>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 
 	<xs:simpleType name="woltlab_boxtype">
@@ -43,4 +46,8 @@
 			<xs:enumeration value="content" />
 		</xs:restriction>
 	</xs:simpleType>
+
+	<xs:complexType name="dashboardbox_basic">
+		<xs:attribute name="name" type="woltlab_varchar" />
+	</xs:complexType>
 </xs:schema>
