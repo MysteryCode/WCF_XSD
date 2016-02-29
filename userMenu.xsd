@@ -42,14 +42,7 @@
 					<xs:element name="controller" type="woltlab_varchar_nullable" minOccurs="0" />
 					<xs:element name="iconclassname" type="woltlab_varchar_nullable" minOccurs="0" />
 					<xs:element name="parent" type="woltlab_varchar_nullable" minOccurs="0" />
-					<xs:element name="showorder" minOccurs="0">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="header" />
-								<xs:enumeration value="footer" />
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
+					<xs:element name="showorder" type="xs:unsignedInt" minOccurs="0" />
 				</xs:all>
 			</xs:extension>
 		</xs:complexContent>
