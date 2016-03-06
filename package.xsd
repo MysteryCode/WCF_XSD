@@ -89,7 +89,6 @@
 			<xs:element name="isapplication" type="woltlab_boolean" minOccurs="0" maxOccurs="1" />
 			<xs:element name="version" type="woltlab_varchar" minOccurs="1" maxOccurs="1" />
 			<xs:element name="date" type="xs:date" minOccurs="1" maxOccurs="1" />
-			<xs:element name="plugin" type="woltlab_varchar" minOccurs="0" maxOccurs="1" />
 		</xs:choice>
 	</xs:complexType>
 	
