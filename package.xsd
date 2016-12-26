@@ -49,15 +49,23 @@
 	
 	<!-- instructions elements -->
 	<xs:complexType name="instructions">
-		<xs:sequence>
-			<xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
-		</xs:sequence>
-		<xs:attribute name="type" type="instructionType" use="required" />
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="instruction" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="type" type="xs:string" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="type" type="instructionsType" use="required" />
 		<xs:attribute name="fromversion" type="woltlab_varchar" />
 	</xs:complexType>
 	
-	<!-- instruction type attribute -->
-	<xs:simpleType name="instructionType">
+	<!-- instructions type attribute -->
+	<xs:simpleType name="instructionsType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="install" />
 			<xs:enumeration value="update" />
